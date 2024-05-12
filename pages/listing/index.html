@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bidlify | Listing</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,300;1,700;1,900&display=swap" rel="stylesheet">
+
+    <script src="https://kit.fontawesome.com/b515e79b0f.js" crossorigin="anonymous"></script>
+
+    <link rel="stylesheet" href="/src/css/style.css">
+    <link href="/src/css/tailwind.css" rel="stylesheet">
+
+    <link rel="icon" sizes="16x16" type="image/png" href="/src/images/favico.png"> 
+
+    <script type="module" src="/src/js/pages/listing/index.js"></script>
+</head>
+<body class="mx-auto text-primary bg-light xl:bg-grey">
+
+<!--HEADER-->
+<header class="pt-4 pb-3 lg:pt-8 lg:pb-6 bg-grey">
+    <div class="header-wrapper flex justify-between items-center mx-auto">
+        <span class="w-1/6">
+            <a href="/index.html" class="text-2xl lg:text-3xl xl:text-2xl 2xl:text-3xl font-semibold 2xl:font-bold opacity-95 hover:opacity-100 duration-100">bidlify<span class="text-secondary">.</span></a>
+        </span>
+
+        <div class="items-center justify-between w-1/4 xl:w-1/3 mx-auto gap-10 hidden xl:flex">
+            <a href="/pages/newListing/" class="w-1/3 text-center py-4 hover:font-medium duration-100">New listing</a>
+            <a href="/pages/auctions/" class="w-1/3 text-center py-4 hover:font-medium duration-100">Auctions</a>
+            <a href="#" class="w-1/3 text-center py-4 hover:font-medium duration-100">About</a>
+        </div>
+
+        <div class="xl:w-1/3 2xl:w-1/6 gap-3 items-center justify-end hidden xl:flex" id="header-login"></div>
+    </div>
+</header>
+
+<!--BORDER-->
+
+<div class="border-b"></div>
+
+<!--MAIN CONTENT-->
+
+<main class="flex flex-col xl:flex-row mx-auto header-wrapper xl:bg-grey xl:px-0">
+
+<!-- LEFT SIDE --> 
+
+    <div class="w-full xl:w-1/2 xl:h-full flex self-center">
+        <div class="flex w-full mt-5 md:mt-3 justify-center bg-grey rounded md:py-4">
+            <div class="relative w-full md:w-1/2 xl:w-2/3 2xl:w-1/2" id="listingMediaContainer"></div>
+        </div>
+    </div>
+
+    <!--RIGHT SIDE-->
+    <section class="mb-6 mt-3 md:my-6 rounded-lg px-6 w-full xl:w-1/2 flex flex-col pt-6 pb-14 lg:pt-10 xl:py-20 2xl:py-36 bg-grey md:bg-white lg:pl-20 2xl:pl-24 relative">
+
+        <div class="flex flex-col gap-6 2xl:gap-10 sm:w-3/4 md:w-2/3 2xl:max-w-2xl">
+           
+            <div class="md:absolute md:top-10 md:right-10 2xl:top-14 2xl:right-[127px] my-1" id="ownerButtons"></div>
+
+           <div class="flex w-full gap-5">
+                <a href="" id="userImg" class="w-[4rem] h-[4rem] md:h-[5rem] md:w-[5rem] 2xl:h-[6rem] 2xl:w-[6rem]"> 
+                    <img src="" alt="" class="rounded-full object-cover h-full w-full" id="userImage">
+                </a>
+
+                <div class="flex flex-col">
+                    <div class="flex flex-col">
+                        <p class="text-sm 2xl:text-base">Seller:</p>
+                        <a href="" class="mb-1 md:mb-2 text-lg 2xl:text-xl font-medium hover:text-secondary duration-150" id="userName"></a>
+                    </div>
+                    
+                    <div class="flex gap-2 2xl:gap-4 items-center">
+                        <span class="rounded px-3 py-1 flex items-center justify-center text-xs 2xl:text-sm bg-lightpink">4.8 / 5</span>
+                        <p class="text-xs md:text-sm">Based on <span id="ratings">22</span> ratings</p>
+                    </div>
+                </div>
+           </div>
+        </div>
+
+        <div class="flex-col w-full sm:w-full xl:w-3/4 lg:w-3/4 2xl:max-w-xl mt-4 md:mt-6">
+            <h2 class="font-medium text-lg xl:text-xl my-3" id="listingTitle"></h2>
+
+            <div class="flex pb-2 gap-5 text-sm 2xl:text-base font-medium">
+                <p>Last updated:</p>
+                <span id="lastUpdated"></span>
+            </div>
+
+            <div class="flex gap-5 text-sm 2xl:text-base font-medium">
+                <p>Ends in:</p>
+                <span id="endingTime"></span>
+            </div>
+            <div class="border-b my-6 md:mt-8 2xl:mb-3"></div>
+        </div>
+
+        <div class="flex flex-col md:mt-1 sm:w-full lg:w-3/4 xl:w-3/4 2xl:max-w-xl xl:mt-6">
+            <h3 class="font-medium mb-3 2xl:mb-4">Description:</h3>
+            <p id="listingDescription" class="text-sm leading-relaxed 2xl:text-base text-gray-700 2xl:mb-3"></p>
+
+            <div class="flex gap-1 2xl:gap-3 mt-2 text-xs 2xl:text-sm text-gray-600 w-full" id="tagsContainer"></div>
+
+            <div class="border-b my-6 md:mt-8 2xl:mb-3"></div>
+        </div>
+
+        <div class="grid grid-cols-2 w-full sm:w-3/4 md:w-2/3 2xl:max-w-2xl md:mt-6 font-medium">
+            <p class="flex gap-5">Current bid:</p>
+            <span id="currentBid"></span>
+        </div>
+
+        <div class="flex flex-col w-full sm:w-3/4 md:w-2/3 2xl:max-w-2xl mt-6">
+            <label for="bidAmount" class="text-sm 2xl:text-base mb-5 md:mb-4 2xl:mb-6">Type the amount of your bid:</label>
+
+            <div class="flex gap-3 w-full 2xl:gap-4 mb-2 md:mb-0">
+                <input type="number" id="bidAmount" name="bidAmount" class="border rounded h-10 md:h-12 px-3 outline-none w-1/2">
+                <button class="bg-red px-4 py-2 md:px-6 md:py-3 rounded bg-secondary text-sm 2xl:text-base" id="placeBid">Place offer</button>
+            </div>
+        </div>
+
+        <div id="errorContainer" class="hidden pt-6 font-medium text-red-800"></div>
+
+        <div class="mt-3 2xl:mt-6 sm:w-3/4 md:w-2/3 2xl:max-w-2xl">
+            <details class="text-sm 2xl:text-base">
+                <summary class="cursor-pointer">Click here to view bid history<span id="bidCount"></span></summary>
+                <div class="my-4" id="bidHistory"></div>
+            </details>
+            <p class="col-span-2 text-xs 2xl:text-sm text-gray-500 mt-2">*Shipping method and costs will be negotiated with the seller.</p>
+        </div>
+
+        <div class="mt-6 hidden">
+            <span class="text-sm"><a href="" class="underline font-medium">Sign up</a> or <a href="" class="underline font-medium">log in</a> to make an offer.</span>
+        </div>       
+    </section>
+</main>
+
+<!--FOOTER-->
+
+<footer class="px-4 md:px-14 xl:px-20 2xl:px-32 pt-4 pb-6 lg:pt-10 lg:pb-14 flex flex-col xl:flex-row xl:justify-between bg-light">
+    <span class="lg:w-1/6">
+        <a href="/index.html" class="text-lg lg:text-xl font-bold">Bidlify<span class="text-secondary">.</span></a>
+    </span>
+
+    <div class="pt-3 pb-4">
+        <p class="font-medium text-sm md:text-base">Contact us</p>
+        <ul class="text-gray-500 pt-1 lg:pt-4">
+            <li class="hover:text-primary py-0.5 lg:py-1 text-xs md:text-sm 2xl:text-base">Support</li>
+            <li class="hover:text-primary py-0.5 lg:py-1 text-xs md:text-sm 2xl:text-base">FAQ</li>
+            <li class="hover:text-primary py-0.5 lg:py-1 text-xs md:text-sm 2xl:text-base">Terms & policies</li>
+            <li class="pt-1 lg:pt-3 pb-1 text-xs md:text-sm 2xl:text-base">Phone: +47 56 97 34 00</li>
+            <li class="py-0.5 lg:py-1 text-xs md:text-sm 2xl:text-base">Mail: <span class="underline">contact@bidlify.com</span></li>
+        </ul>
+    </div>
+
+    <div class="pb-4">
+        <p class="font-medium text-sm md:text-base">Services</p>
+        <ul class="text-gray-500 pt-1 lg:pt-4">
+            <li class="hover:text-primary py-0.5 lg:py-1 text-xs md:text-sm 2xl:text-base">About us</li>
+            <li class="hover:text-primary py-0.5 lg:py-1 text-xs md:text-sm 2xl:text-base">Gift cards</li>
+            <li class="hover:text-primary py-0.5 lg:py-1 text-xs md:text-sm 2xl:text-base">Sales guide</li>
+            <li class="hover:text-primary py-0.5 lg:py-1 text-xs md:text-sm 2xl:text-base">Positions</li>
+        </ul>
+    </div>
+
+    <div class="max-w-md">
+        <h2 class="font-medium text-sm md:text-base">Newsletter</h2>
+        <p class="py-2 lg:py-4 text-xs md:text-sm 2xl:text-base text-gray-500 leading-relaxed">Enter your email below to be the first to stay updated about new listings, bids and much more.</p>
+
+        <div class="flex items-center mt-2 mb-3 lg:mb-6 gap-2 lg:gap-3">
+            <input type="text" placeholder="Email address" class="border rounded h-8 md:h-10 lg:h-12 w-full pl-3 text-xs md:text-sm lg:text-base" aria-label="Sign up for newsletter">
+            <button class="bg-primary text-white min-w-10 h-8 md:h-10 lg:min-w-12 lg:h-12 rounded flex items-center justify-center">
+                <i class="fa-regular fa-envelope text-sm md:text-base"></i>
+            </button>
+        </div>
+
+        <img src="/src/images/payments.png.png" alt="An image of several payment methods">
+    </div>
+</footer>
+
+<footer class="flex lg:items-center flex-col lg:flex-row lg:justify-between px-4 md:px-14 xl:px-20 2xl:px-32 py-4 md:py-6 bg-primary text-white">
+    <p class="text-xs md:text-sm 2xl:text-base">Copyright © Bidlify 2024. All rights reserved.</p>
+    <div class="flex items-center justify-between w-28 lg:w-40 text-lg md:text-2xl mt-2 md:mt-3">
+        <i class="fa-brands fa-instagram hover:text-3xl w-1/3 lg:text-right"></i>
+        <i class="fa-brands fa-square-facebook hover:text-3xl w-1/3 lg:text-right"></i>
+        <i class="fa-brands fa-square-twitter hover:text-3xl w-1/3 lg:text-right"></i>
+    </div>
+</footer>
+
+<!--MODAL-->
+
+<div class="modal w-full h-screen fixed top-0 items-center justify-center hidden" id="modal-container">
+    <div class="modal-container bg-white w-full md:w-2/3 lg:w-1/2 2xl:w-1/4 2xl:min-w-[40rem] relative h-screen md:rounded-md md:h-fit flex items-center">
+        <form class="modal-content px-6 sm:p-8 md:p-16" id="login-form">
+            
+            <button class="flex items-center justify-center absolute p-6 right-0 top-0" id="closeBtn" type="button">
+                <i class="fa-solid fa-xmark text-xl text-gray-500 hover:text-primary duration-300"></i>                      
+            </button>
+
+            <h1 class="text-2xl lg:text-3xl font-bold mb-4 2xl:mb-6">Log in.</h1>
+            <p class="leading-relaxed w-full">Welcome back to Bidlify - your premier auction marketplace. Buy, sell, and explore thousands of unique items effortlessly. Log in and unleash the bidding frenzy!</p>
+ 
+            <div class="flex flex-col gap-2 pt-5 xl:pt-8">
+                <label for="email" class="font-medium text-sm md:text-base">Your e-mail:</label>
+                <input type="text" id="email" name="email" class="w-full border rounded h-12 outline-none pl-3">
+            </div>
+
+            <div class="flex flex-col gap-2 pt-5 xl:pt-6 relative">
+                <label for="password" class="font-medium text-sm md:text-base">Your password:</label>
+                <input type="password" id="password" name="password" class="w-full border rounded h-12 outline-none pl-3 passwordInput">
+
+                <button class="absolute bottom-3 right-4 toggleButton" type="button">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M2.036 12.322a1.012 1.012 0 0 1 0-.639C3.423 7.51 7.36 4.5 12 4.5c4.638 0 8.573 3.007 9.963 7.178.07.207.07.431 0 .639C20.577 16.49 16.64 19.5 12 19.5c-4.638 0-8.573-3.007-9.963-7.178Z" />
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
+                    </svg>  
+                </button>           
+            </div>
+            
+            <div class="login-error pt-4 xl:pt-6 hidden text-sm font-medium text-red-600"></div>
+
+            <div class="flex pt-4 2xl:pt-8 justify-between w-full text-sm 2xl:text-base">
+                <div class="flex items-center gap-3">
+                    <input type="checkbox" id="remember-me" name="remember-me" class="border md:rounded h-5 w-5">
+                    <label for="remember-me">Remember me</label>
+                </div>
+                <p class="font-medium text-gray-500 hover:text-primary text-sm">Forgot your password?</p>
+            </div>
+
+            <div class="flex gap-3">
+                <button class="px-4 py-2 md:py-3 md:px-6 rounded mt-8 border hover:bg-primary hover:text-white duration-300 text-sm md:text-base" type="button" id="modalCancel">Cancel</button>
+                <button class="bg-secondary px-4 py-2 md:py-3 md:px-6 rounded mt-8 text-sm md:text-base">Log in</button>
+            </div>
+            
+            <p class="mt-8">Don't have an account yet? Register <a href="/pages/register/" class="underline font-medium text-secondary">here.</a></p>
+        </form> 
+    </div>
+</div>
+
+<div class="modal w-full h-screen fixed top-0 items-center justify-center hidden" id="deleteListing">
+    <div class="rounded bg-white max-w-2xl flex items-center flex-col gap-3 py-10 lg:py-16 mx-auto" id="deleteListingContent">
+        <h1 class="font-medium px-8 md:px-10 text-center text-lg">Are you sure you want to <span class="font-semibold">delete</span> this listing?</h1>
+        <p class="text-sm 2xl:text-base px-6 md:px-16 text-center leading-relaxed mt-2 mb-3 lg:mb-4">This action will permanently remove the listing and all associated data, and it will not be retrievable. Are you sure you want to proceed?</p>
+        <div class="flex gap-3">
+            <button class="border px-4 py-2 md:py-3 md:px-6 rounded text-sm 2xl:text-base hover:bg-grey duration-300" id="closeDelete">Cancel</button>
+            <button class="bg-secondary px-4 py-2 md:py-3 md:px-6 border-secondary rounded text-sm 2xl:text-base" id="deleteBtn2">Delete listing</button>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bidlify | Profile</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,300;1,700;1,900&display=swap" rel="stylesheet">
+
+    <script src="https://kit.fontawesome.com/b515e79b0f.js" crossorigin="anonymous"></script>
+
+    <link rel="stylesheet" href="/src/css/style.css">
+    <link href="/src/css/tailwind.css" rel="stylesheet">
+
+    <link rel="icon" sizes="16x16" type="image/png" href="/src/images/favico.png">  
+
+    <script src="/src/js/pages/profile/index.js" type="module"></script>
+</head>
+<body class="mx-auto text-primary bg-light xl:bg-grey">
+
+<!--HEADER-->
+<header class="pt-4 pb-3 lg:pt-8 lg:pb-6 bg-grey">
+    <div class="header-wrapper flex justify-between items-center mx-auto">
+        <span class="w-1/6">
+            <a href="/index.html" class="text-2xl lg:text-3xl xl:text-2xl 2xl:text-3xl font-semibold 2xl:font-bold opacity-95 hover:opacity-100 duration-100">bidlify<span class="text-secondary">.</span></a>
+        </span>
+
+        <div class="items-center justify-between w-1/4 xl:w-1/3 mx-auto gap-10 hidden xl:flex">
+            <a href="/pages/newListing/index.html" class="w-1/3 text-center py-4 hover:font-medium duration-100">New listing</a>
+            <a href="/pages/auctions/index.html" class="w-1/3 text-center py-4 hover:font-medium duration-100">Auctions</a>
+            <p class="w-1/3 text-center py-4 hover:font-medium duration-100">About</p>
+        </div>
+
+        <div class="xl:w-1/3 2xl:w-1/6 gap-3 items-center justify-end flex" id="header-login"></div>
+    </div>
+</header>
+
+<div class="border-b"></div>
+
+<!--SIDEBAR-->
+
+<main class="flex flex-col xl:flex-row header-wrapper mx-auto xl:bg-grey my-4">
+
+    <section class="flex flex-col items-center xl:items-start gap-2.5 py-8 px-6 xl:py-16 2xl:py-20 xl:pl-0 xl:pr-12 2xl:pr-10 bg-grey w-full xl:w-1/3 2xl:w-1/4 rounded">
+
+        <div class="flex justify-between items-center w-full mb-4 xl:mb-8 md:w-2/3 lg:w-1/2 xl:w-full">
+            <h1 class="md:text-lg xl:text-xl font-medium 2xl:font-semibold" id="profileTitle">Your profile</h1>
+            <button class="px-4 py-2 md:py-3 md:px-6 rounded bg-secondary duration-300 hidden text-sm 2xl:text-base" id="editProfileBtn">Edit profile</button>
+        </div>
+        
+        <figure class="h-52 w-52 lg:h-[18rem] lg:w-[18rem] xl:h-[16rem] xl:w-[16rem] 2xl:h-[19rem] 2xl:w-[19rem]">
+            <img src="" alt="" class="object-cover rounded-full h-full w-full" id="profileImage">
+        </figure>
+        
+        <div class="flex flex-col mt-3 xl:mt-6 items-center xl:items-start gap-1 xl:gap-2">
+            <h2 class="2xl:text-xl font-medium 2xl:font-semibold" id="profileName"></h2>
+            <p id="profileEmail" class="text-sm lg:text-base"></p>
+
+            <div class="flex items-center gap-4 my-4 xl:mt-2">
+                <i class="fa-solid fa-coins xl:text-lg 2xl:text-xl"></i>
+                <p class="font-medium text-sm 2xl:text-base">Credits: <span id="profileCredits"></span></p>
+            </div>
+        </div>
+
+        <div class="w-full flex flex-col md:flex-row md:w-2/3 lg:w-1/2 md:gap-3 xl:w-full">
+            <a href="/pages/newListing/" class="px-4 2xl:px-6 py-2 2xl:py-3 rounded bg-light border hover:bg-primary hover:text-white duration-300 w-full justify-center text-sm 2xl:text-base hidden" id="createListingBtn">Create new listing</a>
+
+            <div class="border-b my-5 md:hidden"></div>
+
+            <select name="sort-by" class="border rounded px-4 py-2 outline-none w-full text-center text-sm lg:text-base xl:hidden" id="sortListingsMobile">
+                <option value="Active" selected>Active listings</option>
+                <option value="Expired">Expired listings</option>
+                <option value="Sold">Sold listings</option>
+                <option value="BidHistory">Bid history</option>
+                <option value="Won">Won auctions</option>  
+            </select>
+        </div>
+    </section>
+
+<!-- YOUR LISTINGS -->
+
+    <div class="w-full mb-6 mt-4 md:my-6 xl:rounded-lg xl:px-12 xl:py-10 2xl:py-12 2xl:px-16 xl:bg-light">
+
+        <div class="flex justify-between items-center mt-4 mb-6 xl:mt-3 xl:mb-8">
+            <div class="flex gap-3 items-center">
+                <h1 class="font-medium 2xl:font-semibold md:text-lg lg:text-xl md:mb-1" id="listingGenreTitle"></h1>
+                <span class="text-gray-500 text-sm lg:text-base lg:font-medium" id="listingCount"></span>
+            </div>
+
+            <select name="sort-by" class="border rounded px-3 py-2 2xl:py-3 outline-none w-64 hidden xl:block" id="sortListingsDesktop">
+                <option value="Active" selected>Active listings</option>
+                <option value="Expired">Expired listings</option>
+                <option value="Sold">Sold listings</option>
+                <option value="BidHistory">Bid history</option>
+                <option value="Won">Won auctions</option> 
+            </select>
+        </div>
+
+<!--ACTIVE AUCTIONS-->
+
+        <div class="grid grid-cols-1 md:grid-cols-2 2xl:grid-cols-3 gap-y-6 sm:gap-x-3 sm:gap-y-6 md:gap-3 lg:gap-y-6 mb-16" id="userListings">
+        <div id="bidHistory" class="col-span-1 md:col-span-2 2xl:col-span-3"></div>
+</main>
+
+
+<!--FOOTER-->
+
+<footer class="py-6 lg:pt-10 lg:pb-14 bg-light border-t">
+    <div class="wrapper flex flex-col items-start lg:flex-row lg:justify-between mx-auto">
+        <span class="lg:w-1/7">
+            <a href="/index.html" class="text-lg lg:text-xl font-bold">Bidlify<span class="text-secondary">.</span></a>
+        </span>
+
+        <div class="pt-3 pb-4">
+            <p class="font-medium text-sm md:text-base">Contact us</p>
+            <ul class="text-gray-500 pt-1 lg:pt-4">
+                <li class="hover:text-primary py-0.5 lg:py-1 text-xs md:text-sm 2xl:text-base">Support</li>
+                <li class="hover:text-primary py-0.5 lg:py-1 text-xs md:text-sm 2xl:text-base">FAQ</li>
+                <li class="hover:text-primary py-0.5 lg:py-1 text-xs md:text-sm 2xl:text-base">Terms & policies</li>
+                <li class="pt-1 lg:pt-3 pb-1 text-xs md:text-sm 2xl:text-base">Phone: +47 56 97 34 00</li>
+                <li class="py-0.5 lg:py-1 text-xs md:text-sm 2xl:text-base">Mail: <span class="underline">contact@bidlify.com</span></li>
+            </ul>
+        </div>
+
+        <div class="pt-3 pb-4">
+            <p class="font-medium text-sm md:text-base">Services</p>
+            <ul class="text-gray-500 pt-1 lg:pt-4">
+                <li class="hover:text-primary py-0.5 lg:py-1 text-xs md:text-sm 2xl:text-base">About us</li>
+                <li class="hover:text-primary py-0.5 lg:py-1 text-xs md:text-sm 2xl:text-base">Gift cards</li>
+                <li class="hover:text-primary py-0.5 lg:py-1 text-xs md:text-sm 2xl:text-base">Sales guide</li>
+                <li class="hover:text-primary py-0.5 lg:py-1 text-xs md:text-sm 2xl:text-base">Positions</li>
+            </ul>
+        </div>
+
+        <div class="pt-3 max-w-md">
+            <h2 class="font-medium text-sm md:text-base">Newsletter</h2>
+            <p class="py-2 lg:py-4 text-xs md:text-sm 2xl:text-base text-gray-500 leading-relaxed">Enter your email below to be the first to stay updated about new listings, bids and much more.</p>
+
+            <div class="flex items-center mt-2 mb-3 lg:mb-6 gap-2 lg:gap-3">
+                <input type="text" placeholder="Email address" class="border rounded h-8 md:h-10 lg:h-12 w-full pl-3 text-sm lg:text-base" aria-label="Sign up for newsletter">
+                <button class="bg-primary text-white min-w-10 h-8 md:h-10 lg:min-w-12 lg:h-12 rounded flex items-center justify-center">
+                    <i class="fa-regular fa-envelope text-sm md:text-base"></i>
+                </button>
+            </div>
+
+            <img src="/src/images/payments.png.png" alt="An image of several payment methods">
+        </div>
+    </div>
+</footer>
+
+<footer class="py-4 md:py-6 bg-primary text-white">
+    <div class="flex lg:items-center flex-col lg:flex-row lg:justify-between wrapper mx-auto">
+        <p class="text-xs md:text-sm 2xl:text-base">Copyright © Bidlify 2024. All rights reserved.</p>
+        <div class="flex items-center justify-between w-28 lg:w-40 text-lg md:text-2xl mt-2 md:mt-3">
+            <i class="fa-brands fa-instagram w-1/3 lg:text-right"></i>
+            <i class="fa-brands fa-square-facebook w-1/3 lg:text-right"></i>
+            <i class="fa-brands fa-square-twitter w-1/3 lg:text-right"></i>
+        </div>
+    </div>
+</footer>
+
+<!--MODAL-->
+
+<div class="modal w-full h-screen fixed top-0 items-center justify-center hidden" id="modal-container">
+    <div class="modal-container bg-white w-full md:w-2/3 lg:w-1/2 2xl:w-1/4 2xl:min-w-[40rem] relative h-screen md:rounded-md md:h-fit flex items-center">
+        <form class="modal-content px-6 sm:p-8 md:p-16" id="login-form">
+            
+            <button class="flex items-center justify-center absolute p-6 right-0 top-0" id="closeBtn" type="button">
+                <i class="fa-solid fa-xmark text-xl text-gray-500 hover:text-primary duration-300"></i>                      
+            </button>
+
+            <h1 class="text-2xl lg:text-3xl font-bold mb-4 2xl:mb-6">Log in.</h1>
+            <p class="leading-relaxed w-full">Welcome back to Bidlify - your premier auction marketplace. Buy, sell, and explore thousands of unique items effortlessly. Log in and unleash the bidding frenzy!</p>
+ 
+            <div class="flex flex-col gap-2 pt-5 xl:pt-8">
+                <label for="email" class="font-medium text-sm md:text-base">Your e-mail:</label>
+                <input type="text" id="email" name="email" class="w-full border rounded h-12 outline-none pl-3">
+            </div>
+
+            <div class="flex flex-col gap-2 pt-5 xl:pt-6 relative">
+                <label for="password" class="font-medium text-sm md:text-base">Your password:</label>
+                <input type="password" id="password" name="password" class="w-full border rounded h-12 outline-none pl-3 passwordInput">
+
+                <button class="absolute bottom-3 right-4 toggleButton" type="button">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M2.036 12.322a1.012 1.012 0 0 1 0-.639C3.423 7.51 7.36 4.5 12 4.5c4.638 0 8.573 3.007 9.963 7.178.07.207.07.431 0 .639C20.577 16.49 16.64 19.5 12 19.5c-4.638 0-8.573-3.007-9.963-7.178Z" />
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
+                    </svg>  
+                </button>           
+            </div>
+            
+            <div class="login-error pt-4 xl:pt-6 hidden text-sm font-medium text-red-600"></div>
+
+            <div class="flex pt-4 2xl:pt-8 justify-between w-full text-sm 2xl:text-base">
+                <div class="flex items-center gap-3">
+                    <input type="checkbox" id="remember-me" name="remember-me" class="border md:rounded h-5 w-5">
+                    <label for="remember-me">Remember me</label>
+                </div>
+                <p class="font-medium text-gray-500 hover:text-primary text-sm">Forgot your password?</p>
+            </div>
+
+            <div class="flex gap-3">
+                <button class="px-4 py-2 md:py-3 md:px-6 rounded mt-8 border hover:bg-primary hover:text-white duration-300 text-sm md:text-base" type="button" id="modalCancel">Cancel</button>
+                <button class="bg-secondary px-4 py-2 md:py-3 md:px-6 rounded mt-8 text-sm md:text-base">Log in</button>
+            </div>
+            
+            <p class="mt-8">Don't have an account yet? Register <a href="/pages/register/" class="underline font-medium text-secondary">here.</a></p>
+        </form> 
+    </div>
+</div>
+
+<!--EDIT PROFILE-->
+
+<div class="modal w-full h-screen fixed top-0 hidden items-center justify-center" id="editProfile">
+    <div class="rounded bg-white w-full sm:w-5/6 md:w-1/2 xl:w-1/3 2xl:max-w-2xl flex flex-col gap-3 py-10 px-6 md:px-8 xl:px-14">
+        <div class="flex justify-between items-center mb-3">
+            <h1 class="font-medium md:text-lg lg:text-xl">Edit profile image</h1>
+            <button class="pl-6 pt-3">
+                <i class="fa-solid fa-xmark text-xl text-gray-600 hover:text-primary duration-150" id="closeEditProfile"></i>
+            </button>
+        </div>
+        
+        <figure class="bg-grey w-full rounded flex justify-center p-5 mb-1 md:mb-3">
+            <img src="" alt="" class="rounded-full h-56 w-56 sm:h-64 sm:w-64 md:h-72 md:w-72 xl:h-80 xl:w-80 object-cover" id="editImage">
+        </figure>
+
+        <form class="flex flex-col">
+            <label for="imageInput" class="mb-3 text-sm md:text-base">Image link:</label>
+
+            <div class="flex w-full gap-3">
+                <input type="text" name="imageInput" id="imageInput" class="border rounded w-full pl-3 h-12">
+            </div>
+            
+            <div class="flex mt-6 gap-3 pb-3">
+                <button class="border px-4 py-2 md:py-3 md:px-6 rounded text-sm 2xl:text-base hover:bg-grey duration-300" id="cancelChangesBtn">Cancel</button>
+                <button class="bg-secondary px-4 py-2 md:py-3 md:px-6 border-secondary rounded text-sm 2xl:text-base" id="saveChangesBtn">Save changes</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<!--"FEILMELDINGER"-->
+
+<div class="activeListings hidden">
+    <p class="text-sm lg:text-base 2xl:text-lg">No active listings yet. Create a listing to get started!</p>
+</div>
+
+<div class="expiredListings hidden">
+    <p class="text-sm lg:text-base 2xl:text-lg">Woops... Looks like your listings are still active or sold!</p>
+    <p class="text-sm lg:text-base 2xl:text-lg">Or perhaps you have not made a listing yet? If so, create one <a href="/pages/newListing/" class="font-semibold text-secondary">here.</a></p>
+</div>
+
+<div class="soldListings hidden">
+    <p class="text-sm lg:text-base 2xl:text-lg">No sold listings yet. Have faith and patience!</p>
+</div>
+
+<div class="noBids hidden">
+    <p class="text-sm lg:text-base 2xl:text-lg">Your bid history is empty. Look through <a href="/pages/auctions/" class="font-semibold text-secondary">our auctions</a> and get the bidding frenzy started!</p>
+</div>
+
+<div class="wonAuctions hidden">
+    <p class="text-sm lg:text-base 2xl:text-lg">No won auctions yet. Better luck next time! Look through <a href="/pages/auctions/" class="font-semibold text-secondary">our auctions.</a></p>
+</div>
+
+</body>
+</html>
