@@ -25,7 +25,11 @@ function createHeaderLoggedIn(profile) {
     const layerBackground = createElement('div', 'h-12 w-12 lg:w-14 lg:h-14 xl:w-16 xl:h-16 cursor-pointer rounded-full object-cover absolute bg-black-opacity opacity-0 hover:opacity-100 duration-300');
     layerBackground.id = "profileDropDownBtn";
 
-    layerBackground.addEventListener('click', dropDownMenu);
+    if (window.innerWidth > 1200+"px") {
+        layerBackground.addEventListener('click', dropDownMenu);
+    } else layerBackground.addEventListener("click", (e) => {
+        e.preventDefault()
+        window.location.href = "/pages/profile/"})
 
     const profileAvatar = createElement('img', 'h-12 w-12 lg:w-14 lg:h-14 xl:w-16 xl:h-16 rounded-full object-cover');
     profileAvatar.src = profile.avatar.url;
