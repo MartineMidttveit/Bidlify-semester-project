@@ -25,6 +25,7 @@ userProfile(profile, isOwner);
 profileImage();
 openEditProfile();
 
-
+const loadingIndicator = document.querySelector(".loading-indicator");
+if (loadingIndicator) loadingIndicator.remove();
 
 

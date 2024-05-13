@@ -38,5 +38,7 @@ for(let i = 0; i < 4; i++) {
     latestListings.appendChild(thumbnail(sortByCreated[i]))
 }
 
-
-
+const loadingIndicator = document.querySelectorAll(".loading-indicator");
+loadingIndicator.forEach(indicator => {
+   indicator.remove();
+});
