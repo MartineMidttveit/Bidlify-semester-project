@@ -4,6 +4,8 @@ import listingMedia from "./listingMedia.js";
 import newDate from "../../helpers/newDate.js";
 import createElement from "../../helpers/createElement.js";
 import placeBid from "./placeBid.js";
+import storage from "../../helpers/storage.js"
+import modalToggle from "../../helpers/modalToggle.js"
 
 const listingMediaContainer = document.querySelector("#listingMediaContainer");
 const profileName = document.querySelector("#userName");
@@ -17,7 +19,6 @@ const tagsContainer = document.querySelector("#tagsContainer");
 export default function listingDetails (listing, id) {
 
     profileName.textContent = listing.seller.name;
-    profileName.href = `/pages/profile/?name=${listing.seller.name}`;
 
     document.querySelector("#listingTitle").textContent = listing.title;
 
@@ -35,9 +36,22 @@ export default function listingDetails (listing, id) {
 
     document.querySelector("#currentBid").textContent = listing.bids.length > 0 ? listing.bids[listing.bids.length - 1].amount + " credits": 0 + " credits";
 
-    userImg.href = `/pages/profile/?name=${listing.seller.name}`;
+
     userImage.src = listing.seller.avatar.url;
     userImg.append(userImage);
+
+    const toProfile = (e) => {
+        e.preventDefault()
+        const profile = storage.get("profile")
+        if(!profile) {
+            modalToggle();
+            return;
+        }
+        else window.location.href = `/pages/profile/?name=${listing.seller.name}`
+    }
+
+    userImg.addEventListener("click", toProfile)
+    profileName.addEventListener("click", toProfile);
 
     listing.bids.reverse()
 
