@@ -1,34 +1,40 @@
-const searchInput = document.querySelector("#searchInput");
-const searchButton = document.querySelector("#searchButton");
-const allListings = document.querySelector("#allListings");
-const amountOfListings = document.querySelector("#amountOfListings");
-const noResults = document.querySelector(".noResults");
+import searchListings from "../../api/auth/requests/searchListings.js";
+import allActiveListings from "../../api/auth/requests/complexRequests/allActiveListings.js";
+import thumbnail from "../../templates/listings/thumbnails/index.js";
 
 export default function searchBar() {
+    const searchInput = document.querySelector("#searchInput");
+    const searchButton = document.querySelector("#searchButton");
+    const allListingsContainer = document.querySelector("#allListings");
+    const amountOfListings = document.querySelector("#amountOfListings");
+    const noResults = document.querySelector(".noResults");
 
-    const listingTitles = allListings.querySelectorAll("#listingTitle")
+    searchButton.addEventListener("click", async () => {
+        try {
+            const listings = await allActiveListings();
+            const searchTerm = searchInput.value.toLowerCase(); 
+            
+            const filteredListings = listings.filter(listing =>
+                listing.title.toLowerCase().includes(searchTerm)
+            );
 
-    searchButton.addEventListener("click", (e) => {
-        let result = [];
+            allListingsContainer.innerHTML = "";
+            noResults.classList.add("hidden");
+            amountOfListings.textContent = "";
 
-        listingTitles.forEach(listing => {
-            if(listing.textContent.toLowerCase().includes(searchInput.value.toLowerCase())) {
-                listing.parentElement.parentElement.classList.remove("hidden")
-                result.push(listing)
+            if (filteredListings.length > 0) {
+                filteredListings.forEach(listing => {
+                    const listingElement = thumbnail(listing);
+                    allListingsContainer.appendChild(listingElement);
+                });
+                amountOfListings.textContent = `(${filteredListings.length} listings)`;
+            } else {
+                noResults.classList.remove("hidden");
+                noResults.classList.add("flex");
             }
-            else {
-                listing.parentElement.parentElement.classList.add("hidden")
-            }
-        })
-
-        amountOfListings.textContent = `(${result.length} listings)`
-
-        if (result.length === 0) {
-            noResults.classList.remove("hidden");
-            noResults.classList.add("flex")
+        } catch (error) {
+            console.error(error);
+            displayError("An error occurred while fetching listings.");
         }
-
-    }) 
-    
+    });
 }
-
