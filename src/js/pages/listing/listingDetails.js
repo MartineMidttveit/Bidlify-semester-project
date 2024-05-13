@@ -27,6 +27,7 @@ export default function listingDetails (listing, id) {
     liveEndsAt(listing.endsAt, endsAtContainer);
 
     document.querySelector("#listingDescription").textContent = listing.description ? listing.description : "No description provided.";
+    document.querySelector("#listingMeta").textContent = listing.description ? listing.description : "Find details and bid on this item! View photos, description, and place your bid. Don't miss out on great deals!";
 
     listing.tags.forEach(tag => {
         const tagText = document.createElement("p");
