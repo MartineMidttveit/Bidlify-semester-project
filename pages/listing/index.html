@@ -21,19 +21,19 @@
 <body class="mx-auto text-primary bg-light xl:bg-grey">
 
 <!--HEADER-->
-<header class="pt-4 pb-3 lg:pt-8 lg:pb-6 bg-grey">
+<header class="pt-4 pb-3 lg:pt-8 lg:pb-6">
     <div class="header-wrapper flex justify-between items-center mx-auto">
-        <span class="w-1/6">
+        <span class="w-1/4">
             <a href="/index.html" class="text-2xl lg:text-3xl xl:text-2xl 2xl:text-3xl font-semibold 2xl:font-bold opacity-95 hover:opacity-100 duration-100">bidlify<span class="text-secondary">.</span></a>
         </span>
 
-        <div class="items-center justify-between w-1/4 xl:w-1/3 mx-auto gap-10 hidden xl:flex">
-            <a href="/pages/newListing/" class="w-1/3 text-center py-4 hover:font-medium duration-100">New listing</a>
-            <a href="/pages/auctions/" class="w-1/3 text-center py-4 hover:font-medium duration-100">Auctions</a>
-            <a href="#" class="w-1/3 text-center py-4 hover:font-medium duration-100">About</a>
+        <div class="items-center justify-between gap-24 hidden xl:flex">
+            <a href="/pages/newListing/index.html" class="text-center py-4 hover:font-medium duration-100" id="createNewListing">New listing</a>
+            <a href="/pages/auctions/index.html" class="text-center py-4 hover:font-medium duration-100">Auctions</a>
+            <p class="text-center py-4 hover:font-medium duration-100">About</p>
         </div>
 
-        <div class="xl:w-1/3 2xl:w-1/6 gap-3 items-center justify-end hidden xl:flex" id="header-login"></div>
+        <div class="gap-3 items-center justify-end flex w-full xl:w-1/4" id="header-login"></div>
     </div>
 </header>
 
@@ -49,7 +49,11 @@
 
     <div class="w-full xl:w-1/2 xl:h-full flex self-center">
         <div class="flex w-full mt-5 md:mt-3 justify-center bg-grey rounded md:py-4">
-            <div class="relative w-full md:w-1/2 xl:w-2/3 2xl:w-1/2" id="listingMediaContainer"></div>
+            <div class="relative w-full md:w-1/2 xl:w-2/3 2xl:w-1/2" id="listingMediaContainer">
+                <div class="loading-indicator flex items-center justify-center col-span-1 md:col-span-2 2xl:col-span-3">
+                    <span class="loader"></span>
+                </div>
+            </div>
         </div>
     </div>
 
@@ -58,11 +62,11 @@
 
         <div class="flex flex-col gap-6 2xl:gap-10 sm:w-3/4 md:w-2/3 2xl:max-w-2xl">
            
-            <div class="md:absolute md:top-10 md:right-10 2xl:top-14 2xl:right-[127px] my-1" id="ownerButtons"></div>
+        <div class="md:absolute md:top-10 md:right-10 2xl:top-14 2xl:right-[127px] my-1" id="ownerButtons"></div>
 
            <div class="flex w-full gap-5">
                 <a href="" id="userImg" class="w-[4rem] h-[4rem] md:h-[5rem] md:w-[5rem] 2xl:h-[6rem] 2xl:w-[6rem]"> 
-                    <img src="" alt="" class="rounded-full object-cover h-full w-full" id="userImage">
+                    <img src="/src/images/placeholder/placeholder.png" alt="A placeholder image for the user profile image" class="rounded-full object-cover h-full w-full" id="userImage">
                 </a>
 
                 <div class="flex flex-col">

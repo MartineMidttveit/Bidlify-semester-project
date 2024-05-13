@@ -21,3 +21,6 @@ if (isOwner) {
 }
 
 listingDetails(listing, id);
+
+const loadingIndicator = document.querySelector(".loading-indicator");
+if (loadingIndicator) loadingIndicator.remove();
