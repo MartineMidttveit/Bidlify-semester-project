@@ -10,7 +10,6 @@ const sortListingsMobile = document.querySelector("#sortListingsMobile");
 const listingGenreTitle = document.querySelector("#listingGenreTitle");
 const listingCount = document.querySelector("#listingCount");
 
-
 export default async function userListings(name) {
     let active = [];
     let expired = [];
