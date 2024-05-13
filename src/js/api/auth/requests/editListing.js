@@ -23,7 +23,6 @@ export default async function editListing(listingData, id) {
                 if (data.errors) {
                     displayError(data.errors[0].message)
                 } 
-        
                 throw new Error(data);
               }
     
@@ -35,5 +34,6 @@ export default async function editListing(listingData, id) {
 
             return data;
     } catch (err){
+        console.error(err);
     }
 }

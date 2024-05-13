@@ -1,5 +1,6 @@
 import config from "../../config.js";
 import storage from "../../../helpers/storage.js";
+import displayError from "../../../helpers/displayError.js"
 
 export default async function deleteListing(id) {
 
@@ -20,5 +21,5 @@ if (response.status === 204) {
 }
 
 if (!response.ok) 
-    console.error(response)
+    displayError("Something went wrong. Could not delete listing.")
 }

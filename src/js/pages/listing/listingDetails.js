@@ -37,7 +37,6 @@ export default function listingDetails (listing, id) {
 
     document.querySelector("#currentBid").textContent = listing.bids.length > 0 ? listing.bids[listing.bids.length - 1].amount + " credits": 0 + " credits";
 
-
     userImage.src = listing.seller.avatar.url;
     userImg.append(userImage);
 

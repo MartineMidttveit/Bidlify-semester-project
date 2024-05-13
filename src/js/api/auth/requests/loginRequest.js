@@ -27,7 +27,7 @@ export default async function loginRequest(body) {
             }
     
             throw new Error(data);
-          }
+        }
 
         const data = await response.json()
 
@@ -41,8 +41,8 @@ export default async function loginRequest(body) {
         return data;
 
     } 
-    catch (error) {
-        console.log(error)
+    catch (err) {
+        console.error(err)
     }
 }
 

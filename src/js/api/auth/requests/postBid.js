@@ -18,12 +18,14 @@ export default async function postBid(id, body) {
     } )
 
     const data = await response.json()
+
   if (data.errors) {
     const errorContainer = document.querySelector("#errorContainer");
     errorContainer.classList.remove("hidden")
     errorContainer.textContent = data.errors[0].message
     setTimeout(() => errorContainer.classList.add("hidden"), 4000);
   }
+  
    else if(data) {
     const profile = storage.get("profile")
     const bidHistory = document.querySelector("#bidHistory")

@@ -5,6 +5,8 @@ import openEditProfile from "../../../pages/profile/openEditProfile.js";
 openEditProfile();
 
 export default async function updateAvatar(name, body) {
+
+try {
     const token = storage.get("token");
     const url = config.BaseURL + "auction/profiles/" + name;
 
@@ -17,6 +19,15 @@ export default async function updateAvatar(name, body) {
         },
         body: JSON.stringify(body),
     });
+
+    if (!response.ok) {
+        const data = await response.json();
+
+        if (data.errors) {
+            displayError(data.errors[0].message)
+        } 
+        throw new Error(data);
+    }
 
     const data = await response.json();
 
@@ -32,4 +43,8 @@ export default async function updateAvatar(name, body) {
 
         return data.data;
     }
+} catch(err) {
+    console.error(err);
 }
+}
+   

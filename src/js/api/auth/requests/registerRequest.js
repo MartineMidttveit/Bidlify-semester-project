@@ -21,7 +21,6 @@ export default async function registerRequest(body) {
             if (data.errors) {
                 displayError(data.errors[0].message)
             } 
-    
             throw new Error(data);
           }
 
@@ -49,7 +48,7 @@ export default async function registerRequest(body) {
         return data;
 
     } 
-    catch (error) {
-        console.error(error)
+    catch (err) {
+        console.error(err)
     }
 }

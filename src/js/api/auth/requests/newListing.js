@@ -35,5 +35,6 @@ export default async function createNewListing(listingData) {
 
             return data;
     } catch (err){
+        console.error(err);
     }
 }
